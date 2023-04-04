@@ -1,7 +1,8 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 export function makeUl(array) {
   let list = document.querySelector('.country-list');
   list.innerHTML = '';
-
   for (const element of array) {
     let li = document.createElement('li');
     let image = document.createElement('img');
@@ -16,8 +17,8 @@ export function makeUl(array) {
 
     if (array.length === 1) {
       let div = document.createElement('div');
-        div.classList.add('content-wrapper');
-        
+      div.classList.add('content-wrapper');
+
       const capital = document.createElement('p');
       const population = document.createElement('p');
       const languages = document.createElement('p');
@@ -41,7 +42,15 @@ export function makeUl(array) {
 
       li.appendChild(div);
     }
-    +list.appendChild(li);
+    list.appendChild(li);
   }
+  tooManyMatches(array, list);
   return list;
+}
+
+function tooManyMatches(array, list) {
+  if (array.length > 10) {
+    list.innerHTML = '';
+    Notify.info('Too many matches found. Please enter a more specific name.');
+  }
 }
