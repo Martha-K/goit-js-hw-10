@@ -20,6 +20,7 @@ function search(e) {
     list.innerHTML = '';
   } else {
     fetchCountries(value)
+      // .then(data => console.log('data', data))
       .then(data => makeUl(data))
       .catch(() => Notify.failure('Oops, there is no country with that name'));
   }

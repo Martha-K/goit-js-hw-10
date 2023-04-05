@@ -30,7 +30,7 @@ export function makeUl(array) {
         `Population: ${element.population}`
       );
       const languagesContent = document.createTextNode(
-        `Languages: ${element.languages.ukr}`
+        `Languages: ${Object.values(element.languages)}`
       );
       capital.appendChild(capitalContent);
       population.appendChild(populationContent);
